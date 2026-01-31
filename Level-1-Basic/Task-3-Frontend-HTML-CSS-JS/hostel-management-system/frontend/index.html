@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hostel Management System</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1>Hostel Management System</h1>
+    <p>Dashboard Overview</p>
+  </header>
+
+  <nav class="navbar">
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="rooms.html">Rooms</a>
+  </nav>
+
+  <main class="container">
+    <section class="dashboard">
+
+      <div class="card">
+        <h2>Total Students</h2>
+        <p id="studentCount">0</p>
+      </div>
+
+      <div class="card">
+        <h2>Total Rooms</h2>
+        <p id="roomCount">0</p>
+      </div>
+
+    </section>
+
+    <section class="info">
+      <h3>System Description</h3>
+      <p>
+        This hostel management system allows administrators to manage
+        hostel rooms and student allocations efficiently.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Hostel Management System. All rights reserved.</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script>
+    async function loadDashboard() {
+      const students = await getStudents();
+      const rooms = await getRooms();
+
+      document.getElementById("studentCount").innerText = students.length;
+      document.getElementById("roomCount").innerText = rooms.length;
+    }
+
+    loadDashboard();
+  </script>
+
+</body>
+</html>
